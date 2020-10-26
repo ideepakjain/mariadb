@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import com.learn.domain.Product;
 
 /**
- * Created by jt on 1/10/17.
+ * The Interface ProductRepository.
  */
 public interface ProductRepository extends CrudRepository<Product, Long> {
 }

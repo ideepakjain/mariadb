@@ -1,51 +1,100 @@
 package com.learn.domain;
 
+import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.math.BigDecimal;
 
-
+/**
+ * The Class Product.
+ */
 @Entity
 public class Product {
 
-    @Id
-    @GeneratedValue
-    private Long _id;
-    private String description;
-    private BigDecimal price;
-    private String imageUrl;
+	/** The id. */
+	@Id
+	@GeneratedValue
+	private Long _id;
 
-    public Long getId() {
-        return _id;
-    }
+	/** The description. */
+	private String description;
 
-    public void setId(Long id) {
-        this._id = id;
-    }
+	/** The price. */
+	private BigDecimal price;
 
-    public String getDescription() {
-        return description;
-    }
+	/** The image url. */
+	private String imageUrl;
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	/**
+	 * Gets the description.
+	 *
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
 
-    public BigDecimal getPrice() {
-        return price;
-    }
+	/**
+	 * Gets the id.
+	 *
+	 * @return the id
+	 */
+	public Long getId() {
+		return _id;
+	}
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
+	/**
+	 * Gets the image url.
+	 *
+	 * @return the image url
+	 */
+	public String getImageUrl() {
+		return imageUrl;
+	}
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
+	/**
+	 * Gets the price.
+	 *
+	 * @return the price
+	 */
+	public BigDecimal getPrice() {
+		return price;
+	}
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
+	/**
+	 * Sets the description.
+	 *
+	 * @param description the new description
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * Sets the id.
+	 *
+	 * @param id the new id
+	 */
+	public void setId(Long id) {
+		this._id = id;
+	}
+
+	/**
+	 * Sets the image url.
+	 *
+	 * @param imageUrl the new image url
+	 */
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	/**
+	 * Sets the price.
+	 *
+	 * @param price the new price
+	 */
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
 }

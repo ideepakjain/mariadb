@@ -17,56 +17,87 @@ import org.springframework.web.bind.annotation.RestController;
 import com.learn.domain.Product;
 import com.learn.services.ProductService;
 
- 
-
 /**
- * Created by jt on 1/10/17.
+ * The Class ProductController.
  */
 @RestController
 public class ProductController {
-	
-    private ProductService productService;
 
-    @Autowired
-    public void setProductService(ProductService productService) {
-        this.productService = productService;
-    }
-    
-    @GetMapping("/products")
-    public List<Product> list() {
-        return productService.listAll();
-    }
-    
-    @GetMapping("/products/{id}")
-    public ResponseEntity<Product> get(@PathVariable Long id) {
-        try {
-            Product product = productService.getById(id);
-            return new ResponseEntity<Product>(product, HttpStatus.OK);
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<Product>(HttpStatus.NOT_FOUND);
-        }      
-    }
-    
-    @PostMapping("/products")
-    public void add(@RequestBody Product product) {
-    	productService.saveOrUpdate(product);
-    }
-    
-    @PutMapping("/products/{id}")
-    public ResponseEntity<?> update(@RequestBody Product product, @PathVariable Long id) {
-        try {
-            Product existProduct = productService.getById(id);
-            productService.saveOrUpdate(product);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }      
-    }
-    
-    @DeleteMapping("/products/{id}")
-    public void delete(@PathVariable Long id) {
-    	productService.delete(id);
-    }
+	/** The product service. */
+	private ProductService productService;
 
- 
+	/**
+	 * Adds the.
+	 *
+	 * @param product the product
+	 */
+	@PostMapping("/products")
+	public void add(@RequestBody Product product) {
+		productService.saveOrUpdate(product);
+	}
+
+	/**
+	 * Delete.
+	 *
+	 * @param id the id
+	 */
+	@DeleteMapping("/products/{id}")
+	public void delete(@PathVariable Long id) {
+		productService.delete(id);
+	}
+
+	/**
+	 * Gets the.
+	 *
+	 * @param id the id
+	 * @return the response entity
+	 */
+	@GetMapping("/products/{id}")
+	public ResponseEntity<Product> get(@PathVariable Long id) {
+		try {
+			Product product = productService.getById(id);
+			return new ResponseEntity<Product>(product, HttpStatus.OK);
+		} catch (NoSuchElementException e) {
+			return new ResponseEntity<Product>(HttpStatus.NOT_FOUND);
+		}
+	}
+
+	/**
+	 * List.
+	 *
+	 * @return the list
+	 */
+	@GetMapping("/products")
+	public List<Product> list() {
+		return productService.listAll();
+	}
+
+	/**
+	 * Sets the product service.
+	 *
+	 * @param productService the new product service
+	 */
+	@Autowired
+	public void setProductService(ProductService productService) {
+		this.productService = productService;
+	}
+
+	/**
+	 * Update.
+	 *
+	 * @param product the product
+	 * @param id      the id
+	 * @return the response entity
+	 */
+	@PutMapping("/products/{id}")
+	public ResponseEntity<?> update(@RequestBody Product product, @PathVariable Long id) {
+		try {
+			Product existProduct = productService.getById(id);
+			productService.saveOrUpdate(product);
+			return new ResponseEntity<>(HttpStatus.OK);
+		} catch (NoSuchElementException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+
 }

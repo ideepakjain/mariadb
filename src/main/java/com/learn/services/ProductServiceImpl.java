@@ -10,42 +10,68 @@ import com.learn.domain.Product;
 import com.learn.repositories.ProductRepository;
 
 /**
- * Created by jt on 1/10/17.
+ * The Class ProductServiceImpl.
  */
 @Service
 public class ProductServiceImpl implements ProductService {
 
-    private ProductRepository productRepository;
+	/** The product repository. */
+	private ProductRepository productRepository;
 
-    @Autowired
-    public ProductServiceImpl(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
+	/**
+	 * Instantiates a new product service impl.
+	 *
+	 * @param productRepository the product repository
+	 */
+	@Autowired
+	public ProductServiceImpl(ProductRepository productRepository) {
+		this.productRepository = productRepository;
+	}
 
+	/**
+	 * Delete.
+	 *
+	 * @param id the id
+	 */
+	@Override
+	public void delete(Long id) {
+		productRepository.deleteById(id);
 
-    @Override
-    public List<Product> listAll() {
-        List<Product> products = new ArrayList<>();
-        productRepository.findAll().forEach(products::add); //fun with Java 8
-        return products;
-    }
+	}
 
-    @Override
-    public Product getById(Long id) {
-        return productRepository.findById(id).orElse(null);
-    }
+	/**
+	 * Gets the by id.
+	 *
+	 * @param id the id
+	 * @return the by id
+	 */
+	@Override
+	public Product getById(Long id) {
+		return productRepository.findById(id).orElse(null);
+	}
 
-    @Override
-    public Product saveOrUpdate(Product product) {
-        productRepository.save(product);
-        return product;
-    }
+	/**
+	 * List all.
+	 *
+	 * @return the list
+	 */
+	@Override
+	public List<Product> listAll() {
+		List<Product> products = new ArrayList<>();
+		productRepository.findAll().forEach(products::add); // fun with Java 8
+		return products;
+	}
 
-    @Override
-    public void delete(Long id) {
-        productRepository.deleteById(id);
+	/**
+	 * Save or update.
+	 *
+	 * @param product the product
+	 * @return the product
+	 */
+	@Override
+	public Product saveOrUpdate(Product product) {
+		productRepository.save(product);
+		return product;
+	}
 
-    }
-
-  
 }

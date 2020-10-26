@@ -5,16 +5,38 @@ import java.util.List;
 import com.learn.domain.Product;
 
 /**
- * Created by jt on 1/10/17.
+ * The Interface ProductService.
  */
 public interface ProductService {
 
-    List<Product> listAll();
+	/**
+	 * Delete.
+	 *
+	 * @param id the id
+	 */
+	void delete(Long id);
 
-    Product getById(Long id);
+	/**
+	 * Gets the by id.
+	 *
+	 * @param id the id
+	 * @return the by id
+	 */
+	Product getById(Long id);
 
-    Product saveOrUpdate(Product product);
+	/**
+	 * List all.
+	 *
+	 * @return the list
+	 */
+	List<Product> listAll();
 
-    void delete(Long id);
+	/**
+	 * Save or update.
+	 *
+	 * @param product the product
+	 * @return the product
+	 */
+	Product saveOrUpdate(Product product);
 
 }
